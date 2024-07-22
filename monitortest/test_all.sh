@@ -10,6 +10,9 @@ echo "Testing deterministic monitor."
 clang test.c ../results/fragmented_monitor.c -o test_fragmented
 echo "Testing fragmented monitor."
 ./test_fragmented
+clang test.c ../results/uca.c -o test_uca
+echo "Testing UCA monitor."
+./test_uca
 
 
 echo "==========================="

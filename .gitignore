@@ -3890,3 +3890,12 @@
 /lib/spot-2.12/spot/twaalgos/mealy_machine.hh
 /lib/spot-2.12/spot/twaalgos/mealy_machine.lo
 /lib/spot-2.12/spot/twaalgos/mealy_machine.o
+/results/uca.c
+/results/uca.dot
+/results/uca.txt
+/monitortest/test_uca
+/pioproject/.gitignore
+/pioproject/src/monitor.c
+/pioproject/.vscode/c_cpp_properties.json
+/pioproject/.vscode/extensions.json
+/pioproject/.vscode/launch.json
