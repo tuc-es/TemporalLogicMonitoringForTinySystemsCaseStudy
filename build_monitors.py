@@ -150,7 +150,7 @@ def monitorCompilerNondeterministic(filenameIn,filenameOut):
                 outFile.write("uint8_t inState"+str(i)+" = 0;\n")
 
         # Build transition function
-        outFile.write("\n/* Monitor step function */\n")
+        outFile.write("\n/* Monitor step/update function */\n")
         outFile.write("int monitor("+",".join(["uint8_t "+a for a in APs])+") {\n")
         for i in range(0,nofStates):
             outFile.write("  uint8_t nextState"+str(i)+" = 0;\n")
@@ -184,7 +184,7 @@ def monitorCompilerNondeterministic(filenameIn,filenameOut):
             outFile.write("  inState"+str(i)+" = nextState"+str(i)+";\n")
         for i in range(0,nofStates):
             outFile.write("  if (inState"+str(i)+") return 0;\n")
-        outFile.write("  return 1; /* Violation if hot having returned earlier. */\n")
+        outFile.write("  return 1; /* Reporting a violation. */\n")
         outFile.write("}\n")
 
 
@@ -242,7 +242,7 @@ def monitorCompilerUniversal(filenameIn,filenameOut):
                 outFile.write("uint8_t inState"+str(i)+" = 0;\n")
 
         # Build transition function
-        outFile.write("\n/* Monitor step function */\n")
+        outFile.write("\n/* Monitor step/update function */\n")
         outFile.write("int monitor("+",".join(["uint8_t "+a for a in APs])+") {\n")
         for i in range(0,nofStates):
             outFile.write("  uint8_t nextState"+str(i)+" = 0;\n")
@@ -323,7 +323,7 @@ def monitorCompilerDeterministic(filenameIn,filenameOut):
             outFile.write("uint32_t monitorState = "+str(a)+";\n")
 
         # Build transition function
-        outFile.write("\n/* Monitor step function */\n")
+        outFile.write("\n/* Monitor step/update function */\n")
         outFile.write("int monitor("+",".join(["uint8_t "+a for a in APs])+") {\n")
         for state in range(nofStates):
             outFile.write("  if (monitorState=="+str(state)+") {\n")
@@ -405,7 +405,7 @@ def monitorCompilerFragmented(filenamesIn,filenameOut):
                     outFile.write("uint8_t inState"+str(fragment)+"_"+str(i)+" = 0;\n")
 
         # Build transition function
-        outFile.write("\n/* Monitor step function */\n")
+        outFile.write("\n/* Monitor step/update function */\n")
         outFile.write("int monitor("+",".join(["uint8_t "+a for a in APs])+") {\n")
         for fragment in range(len(filenamesIn)):
             for i in range(0,nofStates[fragment]):
@@ -475,6 +475,12 @@ assert os.system("lib/spot-2.12/bin/ltl2tgba -f \""+specOfAllBlocks+"\" > result
 outFile.write("\\newcommand{\\nofStatesMonolithic}{"+getNofStatesFromSpotFile("results/monolithic_nba.txt")+"}\n")
 monitorCompilerNondeterministic("results/monolithic_nba.txt","results/monolithic_nba.c")
 outFile.write("\\newcommand{\\nofLinesMonolithic}{"+str(getNofLinesFromFile("results/monolithic_nba.c"))+"}\n")
+# We run out of memory both with optimization turned on and off in the next 4 lines.
+# assert os.system("cp results/monolithic_nba.c pioproject/src/monitor.c")==0
+# assert os.system("cd pioproject; pio run -e nucleo_f446re_noopt > /tmp/pioout 2>&1")!=0
+# newFlash = getFlashOverflowSizeForF446RE("/tmp/pioout")
+# outFile.write("\\newcommand{\\FlashNonDeterministicDoesNotFit}{"+str(newFlash-baseFlash)+"}\n")
+
 
 # Experiment 2: SPOT Compilation to a single det. Monitor
 assert os.system("lib/spot-2.12/bin/ltl2tgba -M -f \""+specOfAllBlocks+"\" > results/monolithic_det_monitor.txt")==0

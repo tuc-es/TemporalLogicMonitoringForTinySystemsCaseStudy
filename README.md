@@ -6,6 +6,7 @@ The results reported on are contained in the folder "results" and in the file "r
 
 Alternatively, the experiments can be re-run.
 
+In case there will be post-archival updates to the data package, they will be made available at: https://github.com/tuc-es/TemporalLogicMonitoringForTinySystemsCaseStudy
 
 License
 -------
@@ -15,8 +16,8 @@ The "build_monitors.py" script is dual-licensed under a BSD license, so it can b
 
 
 
-Running the experiments
----------------------------------------
+Running the experiments on the software monitors
+------------------------------------------------
 A modern version of Linux is assumed in the following.
 
 To prepare running the experiments, first install platformio (see https://docs.platformio.org/en/latest/core/installation/index.html) and the python package pyserial.
@@ -29,4 +30,13 @@ Afterwards, run "./build_monitors.py". The files in the "results" folder as well
 
 
 
+Running the experiments for the hardware-based monitor
+------------------------------------------------------
+The specification from the paper has been manually encoded into the input of a monitor compiler tool. Running "./run_this_experiment.sh" in the "monitor_for_caravel" directory builds program code to be used in a program to be run on the caravel SoC. The numbers reported in the paper were read off manually from the output.
 
+
+
+
+Additional numbers in the paper
+-------------------------------
+Why 130 extra bytes of RAM + 12 bytes for storing the trace informatioN?

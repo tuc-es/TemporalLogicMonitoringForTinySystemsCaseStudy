@@ -1,0 +1,52 @@
+STATES q0 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 q14 q15 q16 q17 q18 q19 q20 q21 q22 q23 q24 q25 q26 q27 q28 q29 q1 
+INITIAL 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+PROPOSITIONS r1 y1 g1 r2 y2 g2 a1 a2
+LET q0' | & ! g1 ! y1 & ! g2 ! y2
+LET collect1 | | | & y1 y2 & y1 g2 & g1 y2 & g1 g2
+LET collect2 | collect1 & q2 | & ! g1 ! y1 & & ! g1 ! g2 ! y2
+LET q2' & q0 & & & ! g2 r1 y1 ! y2
+NEWBLOCK
+LET collect3 | collect2 & q3 | & ! g2 ! y2 & & ! g2 ! g1 ! y1
+LET q3' & q0 & & & ! g1 r2 y2 ! y1
+LET q4' & & & ! g2 ! r1 y1 ! y2
+LET q5' & & & ! g1 ! r2 ! y1 y2
+LET collect4 | collect3 | | & & ! g1 ! r1 ! y1 & & ! g2 y1 ! y2 & & ! g2 ! r1 ! y2
+LET collect5 | collect4 | | & & ! g2 ! r2 ! y2 & & ! g1 y2 ! y1 & & ! g1 ! r2 ! y1
+NEWBLOCK
+LET q6' | & & & g1 ! g2 ! y1 ! y2 & & & g1 ! g2 ! r1 ! y2
+LET q7' | & & ! g1 r1 ! y1 & & & ! g2 r1 ! y1 ! y2
+LET q8' | & & & ! g1 g2 ! y1 ! y2 & & & ! g1 g2 ! r2 ! y1
+LET q9' | & & & ! g1 r2 ! y1 ! y2 & & ! g2 r2 ! y2
+LET collect6 | collect5 & ! g1 ! y1
+LET collect7 | collect6 | & & ! g1 ! r1 ! y1 & & & ! g2 ! r1 ! y1 ! y2
+LET collect8 | collect7 & ! g2 ! y2
+LET collect9 | collect8 | & & ! g2 ! r2 ! y2 & & & ! g1 ! r2 ! y2 ! y1
+LET q10' | & & a1 ! g1 ! y1 & & a1 ! g2 ! y2
+LET q11' | & & a2 ! g2 ! y2 & & a2 ! g1 ! y1
+NEWBLOCK
+LET q12' & q10 a1
+LET q13' & q11 a2
+LET q14' & q13 a1
+LET q15' & q14 a2
+LET q16' & q15 a1
+LET q17' & q16 a2
+NEWBLOCK
+LET q18' & q17 a1
+LET q19' & q18 a2
+LET q20' & q19 a1
+LET q21' & q20 a2
+LET q22' & q20 a1
+LET q23' & q21 a2
+NEWBLOCK
+LET q24' & q22 a1
+LET q25' & q23 a2
+LET q26' & q24 a1
+LET q27' & q25 a2
+NEWBLOCK
+LET q28' | & q26 a1 & q28 & a1 g1
+LET q29' | & q27 a2 & q29 & a2 g2
+LET collect10 | collect9 & & q28 a1 ! g1
+LET collect11 | collect10 & & q29 a2 ! g2
+LET q1' collect11
+
+
