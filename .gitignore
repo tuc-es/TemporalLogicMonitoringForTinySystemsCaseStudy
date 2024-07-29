@@ -3899,3 +3899,7 @@
 /pioproject/.vscode/c_cpp_properties.json
 /pioproject/.vscode/extensions.json
 /pioproject/.vscode/launch.json
+/results/out.pdf
+/monitortest/test_reasontracking
+/monitortest/test_reasontracking_full
+/results/uca_reason_tracking.c
