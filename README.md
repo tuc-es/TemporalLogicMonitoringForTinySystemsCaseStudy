@@ -30,26 +30,26 @@ Preparation / Requirements
 --------------------------
 A modern version of Linux is assumed in the following.
 
-Then, go the the lib directory and run `./get\_libs.sh` from there. This will download `spot` and compile it. You will need a suitable compilation environment installed for this purpose. This script also clones a copy of the monitor compiler tool.
+Then, go the the lib directory and run `./get_libs.sh` from there. This will download `spot` and compile it. You will need a suitable compilation environment installed for this purpose. This script also clones a copy of the monitor compiler tool.
 
 
 Running the experiments on the software monitors
 ------------------------------------------------
 To prepare running the experiments, first install platformio (see https://docs.platformio.org/en/latest/core/installation/index.html) and the Python 3 package pyserial.
 
-Then, edit the `./build_monitors.py` program to select in the line starting with `USE\_NUCLEO\_BOARD` if you want to run the code on a the ST Microelectronics Nucleo64-F446RE board, which needs to be attached via USB. While this board is easy to obtain via mail order with multiple vendors (don't forget ordering a USB->Mini USB cable so you can actually connected the board!), most researchers who want to rerun the experiments probably do not want to obtain one, and want to select "False" here. For computing the size of the monitor program code, the board is not needed, only for measuring the computation times of the monitors.
+Then, edit the `./build_monitors.py` program to select in the line starting with `USE_NUCLEO_BOARD` if you want to run the code on a the ST Microelectronics Nucleo64-F446RE board, which needs to be attached via USB. While this board is easy to obtain via mail order with multiple vendors (don't forget ordering a USB->Mini USB cable so you can actually connected the board!), most researchers who want to rerun the experiments probably do not want to obtain one, and want to select "False" here. For computing the size of the monitor program code, the board is not needed, only for measuring the computation times of the monitors.
 
 Afterwards, run `./build_monitors.py`. The files in the `results` folder as well as `resultsTexMacros.tex` are rewritten.
 
-To test all generated monitors, you can run `./test\_non\_tracking.sh` in the "monitortest" folder. You will need to have clang installed to compile and run the monitors.
+To test all generated monitors, you can run `./test_non_tracking.sh` in the "monitortest" folder. You will need to have clang installed to compile and run the monitors.
 
 
 Running the experiments for the hardware-based monitor
 ------------------------------------------------------
-The specification from the paper has been manually encoded into the input of a monitor compiler tool. Running "./run\_this\_experiment.sh" in the "monitor\_for\_caravel" directory builds program code to be used in a program to be run on the caravel SoC. The numbers reported in the paper were read off manually from the output.
+The specification from the paper has been manually encoded into the input of a monitor compiler tool. Running `./run_this_experiment.sh` in the `monitor_for_caravel` directory builds program code to be used in a program to be run on the caravel SoC. The numbers reported in the paper were read off manually from the output.
 
 
 Experiment on Violation Tracking Monitor
 ----------------------------------------
-To build a violation-tracking monitor (using universal automata), you can run "./build\_violation\_reason\_tracking\_monitor.py" from the main directory. This will build the "results/uca\_reason\_tracking.c" monitor implementation. You can test it (locally on your computer) by running the "test\_non\_tracking.sh" script.
+To build a violation-tracking monitor (using universal automata), you can run `./build_violation_reason_tracking_monitor.py` from the main directory. This will build the `results/uca_reason_tracking.c` monitor implementation. You can test it (locally on your computer) by running the `test_non_tracking.sh` script.
 
