@@ -71,7 +71,10 @@ int main(void) {
   HAL_UART_Transmit(&huart2, (void*)msg, strlen(msg), 1000);
   
   // End of execution. Do nothing until a reset.  
-  while (1) {}
+  while (1) {
+  }
+  
+
 }
 
 

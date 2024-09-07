@@ -1,6 +1,6 @@
-Data package for a paper at the TAP 2024 
+Data package for the paper "Efficient Temporal Logic Runtime Monitoring for Tiny Systems" at TAP 2024 
 ========================================
-This data package details result of the paper "Efficient Temporal Logic Runtime Monitoring for Tiny Systems", published at TAP 2024.
+This data package contains detailed results (and the scripts used to obtain them) of the paper "Efficient Temporal Logic Runtime Monitoring for Tiny Systems", published at TAP 2024.
 
 The results reported on are contained in the folder "results" and in the file "resultsTexMacros.tex". They can be looked at directly.
 
@@ -12,7 +12,7 @@ License
 -------
 The content of this data package is licensed under CC BY-SA version 4.0, available at https://creativecommons.org/licenses/by-sa/4.0/legalcode
 
-The "build_monitors.py" script is dual-licensed under a BSD license, so it can be freely built on. A license text for the BSD license is part of the script.
+The `build_monitors.py` and `build_violation_reason_tracking_monitors.py` scripts are dual-licensed under a BSD license, so they can be freely built on. A license text for the BSD license is part of the script.
 
 
 Overview
@@ -21,7 +21,7 @@ The data package containts the scripts, data, and results for three types of exp
 
 1. Experiments on software monitors for a running example,
 2. An experiment on a hardware monitor encoding of the example used for comparing the different types of software monitors, and
-3. A monitoring example for using a monitor that track the reason for a violation
+3. A monitoring example for using a monitor that tracks the reason for a violation
 
 The experiments of these three types need to be run separately, and how to do so is explained in the following.
 
@@ -30,16 +30,18 @@ Preparation / Requirements
 --------------------------
 A modern version of Linux is assumed in the following.
 
-Then, go the the lib directory and run `./get_libs.sh` from there. This will download `spot` and compile it. You will need a suitable compilation environment installed for this purpose. This script also clones a copy of the monitor compiler tool.
+Go the the lib directory and run `./get_libs.sh` from there. This will download `spot` and compile it. You will need a suitable compilation environment installed for this purpose. This script also clones a copy of the monitor compiler tool.
 
 
 Running the experiments on the software monitors
 ------------------------------------------------
 To prepare running the experiments, first install platformio (see https://docs.platformio.org/en/latest/core/installation/index.html) and the Python 3 package pyserial.
 
-Then, edit the `./build_monitors.py` program to select in the line starting with `USE_NUCLEO_BOARD` if you want to run the code on a the ST Microelectronics Nucleo64-F446RE board, which needs to be attached via USB. While this board is easy to obtain via mail order with multiple vendors (don't forget ordering a USB->Mini USB cable so you can actually connected the board!), most researchers who want to rerun the experiments probably do not want to obtain one, and want to select "False" here. For computing the size of the monitor program code, the board is not needed, only for measuring the computation times of the monitors.
+Then, edit the `./build_monitors.py` and `./build_violation_reason_tracking_monitors.py` scripts to select in the line starting with `USE_NUCLEO_BOARD` if you want to run the code on a the ST Microelectronics Nucleo64-F446RE board, which needs to be attached via USB. While this board is easy to obtain via mail order with multiple vendors (don't forget also ordering a USB->Mini USB cable so you can actually connected the board!), most researchers who want to rerun the experiments probably do not want to obtain one, and want to select "False" here. For computing the size of the monitor program code, the board is not needed, only for measuring the computation times of the monitors.
 
 Afterwards, run `./build_monitors.py`. The files in the `results` folder as well as `resultsTexMacros.tex` are rewritten.
+
+The script `./build_violation_reason_tracking_monitors.py` puts the monitor C code into the `results` folder as well, but only outputs the numbers 
 
 To test all generated monitors, you can run `./test_non_tracking.sh` in the "monitortest" folder. You will need to have clang installed to compile and run the monitors.
 
