@@ -55,3 +55,11 @@ Experiment on Violation Tracking Monitor
 ----------------------------------------
 To build a violation-tracking monitor (using universal automata), you can run `./build_violation_reason_tracking_monitor.py` from the main directory. This will build the `results/uca_reason_tracking.c` monitor implementation. You can test it (locally on your computer) by running the `test_non_tracking.sh` script.
 
+
+Traffic Light Demo
+------------------
+There is a traffic light controller project for an STM32L010RB microcontroller included in this package. It comes in the form of a PlatformIO project and is located in the "TrafficLightPIOProject" folder. The following hardware is needed for executing it:
+. A STM32L010RB Nucleo-64 board
+. A "multi-function shield" Arduino extension board that you can plug on the Nucleo-64 board. These shields are available from several different manufacturers.
+
+T 

@@ -3903,3 +3903,7 @@
 /monitortest/test_reasontracking
 /monitortest/test_reasontracking_full
 /results/uca_reason_tracking.c
+/BaseCubeProject/*
+/TrafficLightPIOProject/.gitignore
+/TrafficLightPIOProject/.vscode/*
+/TrafficLightPIOProject/include/README
